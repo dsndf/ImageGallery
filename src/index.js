@@ -2,16 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import ApiContext from './Context/ApiContext';
+import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const customTheme = extendTheme({
+  styles: {
+    global: {
+      "*": {
+        margin: 0,
+        padding: 0,
+      },
+    },
+  },
+    config :{
+      initialColorMode: 'light',
+      useSystemColorMode: false,
+    },
+  
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(
+  <ApiContext>
+  
+    <ChakraProvider theme={customTheme}>
+    <ColorModeScript initialColorMode={customTheme.config.initialColorMode} ></ColorModeScript>
+      <App />
+    </ChakraProvider>
+  </ApiContext>
+
+
+);
