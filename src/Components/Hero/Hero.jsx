@@ -64,7 +64,7 @@ const Hero = () => {
               fontWeight={"light"}
               fontFamily={"'Lobster', sans-serif"}
             >
-              Image Gallery
+              RandomScape
             </Heading>
           </Link>
 
